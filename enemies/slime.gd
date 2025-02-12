@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 @export var speed = 20
 @export var limit = 0.5
-@export var endPoint: Marker2D
-@onready var animations = $AnimatedSprite2D
+@export var endPoint: Marker2D = null
+@onready var animations = $AnimationPlayer
 
 var startPosition
 var endPosition
