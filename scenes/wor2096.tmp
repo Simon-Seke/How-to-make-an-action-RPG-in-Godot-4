@@ -2893,7 +2893,6 @@ endPoint = NodePath("Marker2D")
 position = Vector2(-64, -8)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-process_mode = 3
 script = ExtResource("10_4i3s4")
 
 [node name="heartsContainer" parent="CanvasLayer" instance=ExtResource("7_5ltpw")]
@@ -2910,6 +2909,3 @@ offset_right = 68.0
 offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[connection signal="closed" from="CanvasLayer/InventoryGui" to="." method="_on_inventory_gui_closed"]
-[connection signal="opened" from="CanvasLayer/InventoryGui" to="." method="_on_inventory_gui_opened"]
