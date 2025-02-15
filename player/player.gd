@@ -12,6 +12,9 @@ signal healthChanged
 
 @export var knockbackPower: int = 800
 
+var isHurt: bool = false
+var enemyCollisions = []
+
 func _ready():
 	effects.play("RESET")
 
@@ -34,20 +37,33 @@ func _physics_process(delta):
 	handleInput()
 	move_and_slide()
 	updateAnimation()
+	if !isHurt:
+		for enemyArea in enemyCollisions:
+			hurByEnemy(enemyArea)
+
+func hurByEnemy(area):
+	currentHealth -= 1
+	if currentHealth < 0:
+		currentHealth = maxHealth
+	healthChanged.emit(currentHealth)
+	isHurt = true
+	
+	knockback(area.get_parent().velocity)
+	effects.play("hurtBlink")
+	hurtTimer.start()
+	await hurtTimer.timeout
+	effects.play("RESET")
+	isHurt = false
 
 func _on_hurt_box_area_entered(area):
 	if area.name == "hitBox":
-		currentHealth -= 1
-		if currentHealth < 0:
-			currentHealth = maxHealth
-		healthChanged.emit(currentHealth)
-		knockback(area.get_parent().velocity)
-		effects.play("hurtBlink")
-		hurtTimer.start()
-		await hurtTimer.timeout
-		effects.play("RESET")
-		
+		enemyCollisions.append(area)
+
 func knockback(enemyVelocity: Vector2):
 	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockbackPower
 	velocity = knockbackDirection
 	move_and_slide()
+
+
+func _on_hurt_box_area_exited(area):
+	enemyCollisions.erase(area)
