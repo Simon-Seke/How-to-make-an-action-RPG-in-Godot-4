@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwcvftqasiwms"
-path="res://.godot/imported/Sprite.png-6f78962bf01607eec1512157e75f1700.ctex"
+path="res://.godot/imported/Sword.png-2c1b80623ac711b4b5e427277e1fa26a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://downloads/NinjaAdventure/Items/Weapons/BigSword/Sprite.png"
-dest_files=["res://.godot/imported/Sprite.png-6f78962bf01607eec1512157e75f1700.ctex"]
+source_file="res://art/Sword.png"
+dest_files=["res://.godot/imported/Sword.png-2c1b80623ac711b4b5e427277e1fa26a.ctex"]
 
 [params]
 
