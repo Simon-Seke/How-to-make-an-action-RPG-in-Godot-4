@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://okbype8j1v87"]
+[gd_scene load_steps=4 format=3 uid="uid://okbype8j1v87"]
 
 [ext_resource type="Script" path="res://gui/slot_gui.gd" id="1_dnub1"]
 [ext_resource type="Texture2D" uid="uid://cu67ertn1ep6i" path="res://art/inventorySlot.png" id="1_lmobc"]
+[ext_resource type="FontFile" uid="uid://eo3p8qb8x8jd" path="res://art/NormalFont.ttf" id="3_mxiiy"]
 
 [node name="Slot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
@@ -25,3 +26,17 @@ offset_bottom = 20.0
 layout_mode = 2
 
 [node name="item" type="Sprite2D" parent="CenterContainer/Panel"]
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+custom_minimum_size = Vector2(11, 13)
+layout_mode = 0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 9.0
+offset_bottom = 12.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mxiiy")
+theme_override_font_sizes/font_size = 8
+text = "99"
+horizontal_alignment = 2
