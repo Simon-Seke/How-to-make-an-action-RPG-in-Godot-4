@@ -9,13 +9,17 @@ var isOpen: bool = false
 @onready var itemStackGuiClass = preload("res://gui/itemsStackGui.tscn")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 
+var itemInHand: ItemStackGui
+
 func _ready():
 	connectSlots()
 	inventory.updated.connect(update)
 	update()
 	
 func connectSlots():
-	for slot in slots:
+	for i in range(slots.size()):
+		var slot = slots[i]
+		slot.index = i
 		var callable = Callable(onSlotClicked)
 		callable = callable.bind(slot)
 		slot.pressed.connect(callable)
@@ -45,4 +49,29 @@ func close():
 	closed.emit()
 
 func onSlotClicked(slot):
-	pass
+	if slot.isEmpty() && itemInHand:
+		print_debug("1")
+		insertItemInSlot(slot)
+		return
+	
+	if !itemInHand:
+		print_debug("2")
+		takeItemFromSlot(slot)
+	
+func takeItemFromSlot(slot):
+	itemInHand = slot.takeItem()
+	add_child(itemInHand)
+	updateItemInHand()
+	
+func insertItemInSlot(slot):
+	var item = itemInHand
+	remove_child(itemInHand)
+	itemInHand = null
+	slot.insert(item)
+	
+func updateItemInHand():
+	if !itemInHand: return
+	itemInHand.global_position = get_global_mouse_position() - itemInHand.size / 2
+
+func _input(event):
+	updateItemInHand()
