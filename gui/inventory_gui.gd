@@ -7,7 +7,8 @@ var isOpen: bool = false
 
 @onready var inventory: Inventory = preload("res://inventory/playerInventory.tres")
 @onready var itemStackGuiClass = preload("res://gui/itemsStackGui.tscn")
-@onready var slots: Array = $NinePatchRect/GridContainer.get_children()
+@onready var hotbar_slots: Array = $NinePatchRect/HBoxContainer.get_children()
+@onready var slots: Array = hotbar_slots + $NinePatchRect/GridContainer.get_children()
 
 var itemInHand: ItemStackGui
 var oldIndex: int = -1
@@ -51,6 +52,7 @@ func close():
 	closed.emit()
 
 func onSlotClicked(slot):
+	print_debug("hej")
 	if locked: return 
 	
 	if slot.isEmpty():
@@ -89,7 +91,6 @@ func swapItems(slot):
 	updateItemInHand()
 	
 func stackItems(slot):
-	print_debug("hej")
 	var slotItem: ItemStackGui = slot.itemStackGui
 	var maxAmount = slotItem.inventorySlot.item.maxAmountPrStack
 	var totalAmount = slotItem.inventorySlot.amount + itemInHand.inventorySlot.amount
