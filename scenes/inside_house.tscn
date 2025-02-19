@@ -1,0 +1,67 @@
+[gd_scene load_steps=12 format=3 uid="uid://cyracdfxaq4cu"]
+
+[ext_resource type="Script" path="res://scenes/base_scene.gd" id="1_va45m"]
+[ext_resource type="Texture2D" uid="uid://dt3hqatv46ckg" path="res://art/TilesetInteriorFloor.png" id="2_bw282"]
+[ext_resource type="Texture2D" uid="uid://cl51v07f1dss1" path="res://art/TilesetWallSimple-transparentbg.png" id="3_tsvl6"]
+[ext_resource type="Texture2D" uid="uid://c68yusd1hpntw" path="res://art/TilesetElement.png" id="3_yfj34"]
+[ext_resource type="PackedScene" uid="uid://cyintxjv1b67d" path="res://scenes/scene_trigger.tscn" id="5_kius2"]
+[ext_resource type="PackedScene" uid="uid://c1ynmnns6ml1b" path="res://player/player.tscn" id="6_8nr4f"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7am0f"]
+texture = ExtResource("2_bw282")
+12:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_arrmg"]
+texture = ExtResource("3_tsvl6")
+8:0/0 = 0
+5:0/0 = 0
+9:0/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+5:1/0 = 0
+9:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kmufk"]
+texture = ExtResource("3_yfj34")
+2:9/0 = 0
+0:7/size_in_atlas = Vector2i(1, 2)
+0:7/0 = 0
+3:7/size_in_atlas = Vector2i(1, 2)
+3:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_e2qgb"]
+sources/1 = SubResource("TileSetAtlasSource_7am0f")
+sources/3 = SubResource("TileSetAtlasSource_arrmg")
+sources/4 = SubResource("TileSetAtlasSource_kmufk")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig2n4"]
+size = Vector2(42, 24)
+
+[node name="InsideHouse" type="Node2D"]
+script = ExtResource("1_va45m")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_e2qgb")
+format = 2
+layer_0/name = "bg"
+layer_0/tile_data = PackedInt32Array(131074, 327683, 0, 131075, 524291, 0, 131076, 524291, 0, 131077, 524291, 0, 131078, 524291, 0, 131079, 524291, 0, 131080, 524291, 0, 131081, 524291, 0, 131082, 524291, 0, 131083, 524291, 0, 131084, 524291, 0, 131085, 524291, 0, 131086, 524291, 0, 131087, 589827, 0, 196610, 327683, 1, 262146, 327683, 1, 327682, 327683, 1, 393218, 327683, 1, 458754, 327683, 1, 196623, 589827, 1, 262159, 589827, 1, 327695, 589827, 1, 393231, 589827, 1, 458767, 589827, 1, 524303, 589827, 4, 524290, 327683, 4, 524293, 393219, 4, 524296, 458755, 4, 524292, 524291, 4, 524291, 524291, 4, 524297, 524291, 4, 524298, 524291, 4, 524299, 524291, 4, 524300, 524291, 4, 524301, 524291, 4, 524302, 524291, 4, 196611, 786433, 1, 262147, 786433, 1, 327683, 786433, 1, 393219, 786433, 1, 458755, 786433, 1, 458756, 786433, 1, 458757, 786433, 1, 458758, 786433, 1, 458759, 786433, 1, 458760, 786433, 1, 458761, 786433, 1, 458762, 786433, 1, 458763, 786433, 1, 458764, 786433, 1, 458765, 786433, 1, 458766, 786433, 1, 393230, 786433, 1, 327694, 786433, 1, 262158, 786433, 1, 196622, 786433, 1, 196621, 786433, 1, 196620, 786433, 1, 196619, 786433, 1, 196618, 786433, 1, 196617, 786433, 1, 196616, 786433, 1, 196615, 786433, 1, 196614, 786433, 1, 196613, 786433, 1, 196612, 786433, 1, 262148, 786433, 1, 262149, 786433, 1, 262150, 786433, 1, 262151, 786433, 1, 262152, 786433, 1, 262153, 786433, 1, 262154, 786433, 1, 262155, 786433, 1, 262156, 786433, 1, 262157, 786433, 1, 327693, 786433, 1, 393229, 786433, 1, 393228, 786433, 1, 393227, 786433, 1, 393226, 786433, 1, 393225, 786433, 1, 393224, 786433, 1, 393223, 786433, 1, 393222, 786433, 1, 327686, 786433, 1, 327685, 786433, 1, 327684, 786433, 1, 393220, 786433, 1, 393221, 786433, 1, 327687, 786433, 1, 327688, 786433, 1, 327689, 786433, 1, 327690, 786433, 1, 327691, 786433, 1, 327692, 786433, 1)
+layer_1/name = "items"
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array(131084, 196612, 7, 131083, 196612, 7, 196611, 4, 7, 262147, 4, 7, 458766, 131076, 9, 458765, 131076, 9, 196622, 4, 7, 131086, 4, 7, 131075, 4, 7, 131079, 4, 7, 131080, 4, 7)
+
+[node name="EntranceMarkers" type="Node2D" parent="."]
+
+[node name="any" type="Marker2D" parent="EntranceMarkers"]
+position = Vector2(112, 120)
+
+[node name="SceneTrigger" parent="." instance=ExtResource("5_kius2")]
+connected_scene = "World"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]
+position = Vector2(112, 140)
+shape = SubResource("RectangleShape2D_ig2n4")
+
+[node name="Player" parent="." instance=ExtResource("6_8nr4f")]

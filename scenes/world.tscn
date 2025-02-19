@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dijbl2aejiktq"]
+[gd_scene load_steps=23 format=3 uid="uid://dijbl2aejiktq"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_a0vmj"]
 [ext_resource type="PackedScene" uid="uid://c1ynmnns6ml1b" path="res://player/player.tscn" id="1_k2hlm"]
@@ -10,9 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://dgl02e2nys5ts" path="res://collectables/sword.tscn" id="6_ouils"]
 [ext_resource type="PackedScene" uid="uid://cwc51lfi86mef" path="res://enemies/slime.tscn" id="6_xmoho"]
 [ext_resource type="PackedScene" uid="uid://cn1m6lfd60qx0" path="res://gui/heartsContainer.tscn" id="7_5ltpw"]
+[ext_resource type="Texture2D" uid="uid://cwrduq0y74h2v" path="res://art/TilesetHouse.png" id="7_sm21v"]
 [ext_resource type="Script" path="res://scenes/CanvasLayer.gd" id="10_4i3s4"]
 [ext_resource type="PackedScene" uid="uid://hu73mxc0r5kg" path="res://gui/inventory_gui.tscn" id="11_p8ge7"]
 [ext_resource type="PackedScene" uid="uid://d0gdjbbfiiy75" path="res://gui/hotbar.tscn" id="13_hvsur"]
+[ext_resource type="PackedScene" uid="uid://cyintxjv1b67d" path="res://scenes/scene_trigger.tscn" id="15_vi2ad"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qmwpt"]
 texture = ExtResource("2_xf7hn")
@@ -2825,6 +2827,15 @@ resource_name = "Collectables"
 scenes/1/scene = ExtResource("5_57x2v")
 scenes/2/scene = ExtResource("6_ouils")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wuhjs"]
+texture = ExtResource("7_sm21v")
+0:0/size_in_atlas = Vector2i(4, 3)
+0:0/0 = 0
+0:0/0/y_sort_origin = 24
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30.5, 18.75, -26.5, 23.75, -15.9375, 23.8125, -15.8125, 10.1875, -0.3125, 10.1875, -0.0625, 23.5625, 25.75, 23.375, 30.375, 18.875, 30.25, -3.125, -31.5, -4.25, -31.875, 3.5, -30.625, 5.75)
+
 [sub_resource type="TileSet" id="TileSet_n7tt7"]
 physics_layer_0/collision_layer = 3
 physics_layer_0/collision_mask = 3
@@ -2839,6 +2850,10 @@ sources/0 = SubResource("TileSetAtlasSource_qmwpt")
 sources/1 = SubResource("TileSetAtlasSource_8rloa")
 sources/2 = SubResource("TileSetAtlasSource_bssmx")
 sources/3 = SubResource("TileSetScenesCollectionSource_00rds")
+sources/4 = SubResource("TileSetAtlasSource_wuhjs")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcwg8"]
+size = Vector2(16, 12)
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -2858,19 +2873,10 @@ layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(393219, 1, 0, 524294, 1, 0, 196621, 1, 0, 458763, 2, 0, 131074, 2, 0, 393229, 2, 0, 131079, 2, 0, 1245188, 1, 0, 851983, 1, 0, 327704, 1, 0, 327714, 1, 0, 786458, 1, 0, 786464, 1, 0, 1507359, 1, 0, 1114136, 1, 0, 1507344, 1, 0, 1507336, 1, 0, 1114124, 1, 0, 851975, 1, 0, 1507352, 1, 0, 393236, 1, 0, 65565, 1, 0, 1507332, 2, 0, 983043, 2, 0, 1179657, 2, 0, 786443, 2, 0, 1114127, 2, 0, 1310735, 2, 0, 655383, 2, 0, 393245, 2, 0, 1245218, 2, 0, 1245215, 2, 0, 1572892, 2, 0, 786452, 2, 0, 65555, 2, 0, 65572, 2, 0, 720932, 2, 0, 1638400, 1179649, 9, 1638401, 1179649, 9, 1638402, 1179649, 9, 1638403, 1179649, 9, 1638404, 1179649, 9, 1638405, 1179649, 9, 1638406, 1179649, 9, 1638407, 1179649, 9, 1638408, 1179649, 9, 1638409, 1179649, 9, 1638410, 1179649, 9, 1638411, 1179649, 9, 1638412, 1179649, 9, 1638413, 1179649, 9, 1638414, 1179649, 9, 1638415, 1179649, 9, 1638416, 1179649, 9, 1638417, 1179649, 9, 1638418, 1179649, 9, 1638419, 1179649, 9, 1638420, 1179649, 9, 1638421, 1179649, 9, 1638422, 1179649, 9, 1638423, 1179649, 9, 1638424, 1179649, 9, 1638425, 1179649, 9, 1638426, 1179649, 9, 1638427, 1179649, 9, 1638428, 1179649, 9, 1638429, 1179649, 9, 1638430, 1179649, 9, 1638431, 1179649, 9, 1638432, 1179649, 9, 1638433, 1179649, 9, 1638434, 1179649, 9, 1638435, 1179649, 9, 1638436, 1179649, 9, 1638437, 1179649, 9, 0, 1179649, 9, 1, 1179649, 9, 2, 1179649, 9, 3, 1179649, 9, 4, 1179649, 9, 5, 1179649, 9, 6, 1179649, 9, 7, 1179649, 9, 8, 1179649, 9, 9, 1179649, 9, 10, 1179649, 9, 11, 1179649, 9, 12, 1179649, 9, 13, 1179649, 9, 14, 1179649, 9, 15, 1179649, 9, 16, 1179649, 9, 17, 1179649, 9, 18, 1179649, 9, 19, 1179649, 9, 20, 1179649, 9, 21, 1179649, 9, 22, 1179649, 9, 23, 1179649, 9, 24, 1179649, 9, 25, 1179649, 9, 26, 1179649, 9, 27, 1179649, 9, 28, 1179649, 9, 29, 1179649, 9, 30, 1179649, 9, 31, 1179649, 9, 32, 1179649, 9, 33, 1179649, 9, 34, 1179649, 9, 35, 1179649, 9, 36, 1179649, 9, 37, 1179649, 9, 65536, 1179649, 9, 131072, 1179649, 9, 196608, 1179649, 9, 262144, 1179649, 9, 327680, 1179649, 9, 393216, 1179649, 9, 458752, 1179649, 9, 524288, 1179649, 9, 589824, 1179649, 9, 655360, 1179649, 9, 720896, 1179649, 9, 786432, 1179649, 9, 851968, 1179649, 9, 917504, 1179649, 9, 983040, 1179649, 9, 1048576, 1179649, 9, 1114112, 1179649, 9, 1179648, 1179649, 9, 1245184, 1179649, 9, 1310720, 1179649, 9, 1376256, 1179649, 9, 1441792, 1179649, 9, 1507328, 1179649, 9, 1572864, 1179649, 9, 65573, 1179649, 9, 131109, 1179649, 9, 196645, 1179649, 9, 262181, 1179649, 9, 327717, 1179649, 9, 393253, 1179649, 9, 458789, 1179649, 9, 524325, 1179649, 9, 589861, 1179649, 9, 655397, 1179649, 9, 720933, 1179649, 9, 917541, 1179649, 9, 983077, 1179649, 9, 1048613, 1179649, 9, 1114149, 1179649, 9, 1179685, 1179649, 9, 1245221, 1179649, 9, 1310757, 1179649, 9, 1376293, 1179649, 9, 1441829, 1179649, 9, 1507365, 1179649, 9, 1572901, 1179649, 9, 38, 1179649, 9, 39, 1179649, 9, 40, 1179649, 9, 41, 1179649, 9, 42, 1179649, 9, 43, 1179649, 9, 44, 1179649, 9, 45, 1179649, 9, 46, 1179649, 9, 47, 1179649, 9, 48, 1179649, 9, 49, 1179649, 9, 50, 1179649, 9, 51, 1179649, 9, 52, 1179649, 9, 53, 1179649, 9, 54, 1179649, 9, 55, 1179649, 9, 56, 1179649, 9, 57, 1179649, 9, 58, 1179649, 9, 59, 1179649, 9, 60, 1179649, 9, 61, 1179649, 9, 62, 1179649, 9, 63, 1179649, 9, 64, 1179649, 9, 65, 1179649, 9, 66, 1179649, 9, 67, 1179649, 9, 68, 1179649, 9, 69, 1179649, 9, 65605, 1179649, 9, 131141, 1179649, 9, 196677, 1179649, 9, 262213, 1179649, 9, 327749, 1179649, 9, 393285, 1179649, 9, 458821, 1179649, 9, 524357, 1179649, 9, 589893, 1179649, 9, 655429, 1179649, 9, 720965, 1179649, 9, 786501, 1179649, 9, 852037, 1179649, 9, 917573, 1179649, 9, 983109, 1179649, 9, 1048645, 1179649, 9, 1114181, 1179649, 9, 1179717, 1179649, 9, 1245253, 1179649, 9, 1310789, 1179649, 9, 1376325, 1179649, 9, 1441861, 1179649, 9, 1507397, 1179649, 9, 1572933, 1179649, 9, 1638469, 1179649, 9, 1638438, 1179649, 9, 1638439, 1179649, 9, 1638440, 1179649, 9, 1638441, 1179649, 9, 1638442, 1179649, 9, 1638443, 1179649, 9, 1638444, 1179649, 9, 1638445, 1179649, 9, 1638446, 1179649, 9, 1638447, 1179649, 9, 1638448, 1179649, 9, 1638449, 1179649, 9, 1638450, 1179649, 9, 1638451, 1179649, 9, 1638452, 1179649, 9, 1638453, 1179649, 9, 1638454, 1179649, 9, 1638455, 1179649, 9, 1638456, 1179649, 9, 1638457, 1179649, 9, 1638458, 1179649, 9, 1638459, 1179649, 9, 1638460, 1179649, 9, 1638461, 1179649, 9, 1638462, 1179649, 9, 1638463, 1179649, 9, 1638464, 1179649, 9, 1638465, 1179649, 9, 1638466, 1179649, 9, 1638467, 1179649, 9, 1638468, 1179649, 9)
 layer_3/name = "collectables"
 layer_3/tile_data = PackedInt32Array(393226, 3, 65536, 720905, 3, 65536, 655373, 3, 65536, 720917, 3, 65536, 393234, 3, 65536, 786436, 3, 65536, 393223, 3, 65536, 262149, 3, 131072)
-
-[node name="Player" parent="TileMap" instance=ExtResource("1_k2hlm")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(116, 74)
-
-[node name="follow cam" type="Camera2D" parent="TileMap/Player" node_paths=PackedStringArray("tilemap")]
-limit_left = 0
-limit_top = 0
-limit_right = 0
-limit_bottom = 0
-script = ExtResource("5_nsemg")
-tilemap = NodePath("../..")
+layer_4/name = "buildings"
+layer_4/y_sort_enabled = true
+layer_4/z_index = 1
+layer_4/tile_data = PackedInt32Array(458812, 4, 0)
 
 [node name="slime" parent="TileMap" node_paths=PackedStringArray("endPoint") instance=ExtResource("6_xmoho")]
 position = Vector2(168, 48)
@@ -2880,7 +2886,7 @@ endPoint = NodePath("Marker2D")
 position = Vector2(16, 24)
 
 [node name="slime2" parent="TileMap" node_paths=PackedStringArray("endPoint") instance=ExtResource("6_xmoho")]
-position = Vector2(264, 96)
+position = Vector2(856, 176)
 endPoint = NodePath("Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="TileMap/slime2"]
@@ -2900,6 +2906,7 @@ script = ExtResource("10_4i3s4")
 [node name="heartsContainer" parent="CanvasLayer" instance=ExtResource("7_5ltpw")]
 
 [node name="InventoryGui" parent="CanvasLayer" instance=ExtResource("11_p8ge7")]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -2921,6 +2928,35 @@ offset_right = 58.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="SceneTrigger" parent="." instance=ExtResource("15_vi2ad")]
+z_index = 2
+position = Vector2(960, 136)
+connected_scene = "inside_house"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_qcwg8")
+
+[node name="Player" parent="." instance=ExtResource("1_k2hlm")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(920, 160)
+
+[node name="follow_cam" type="Camera2D" parent="." node_paths=PackedStringArray("tilemap", "follow_node")]
+position = Vector2(920, 160)
+limit_left = 0
+limit_top = 0
+limit_right = 0
+limit_bottom = 0
+script = ExtResource("5_nsemg")
+tilemap = NodePath("../TileMap")
+follow_node = NodePath("../Player")
+
+[node name="EntranceMarkers" type="Node2D" parent="."]
+
+[node name="InsideHouse" type="Marker2D" parent="EntranceMarkers"]
+position = Vector2(960, 144)
 
 [connection signal="closed" from="CanvasLayer/InventoryGui" to="." method="_on_inventory_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryGui" to="." method="_on_inventory_gui_opened"]

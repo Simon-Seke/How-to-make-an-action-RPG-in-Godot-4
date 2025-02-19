@@ -397,6 +397,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
+collision_layer = 9
 script = ExtResource("1_m4ji0")
 inventory = ExtResource("2_trbmr")
 

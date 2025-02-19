@@ -1,10 +1,12 @@
-extends Node2D
+extends BaseScene
 
 @onready var heartContainer = $CanvasLayer/heartsContainer
-@onready var player = $TileMap/Player
-
+@onready var camera = $follow_cam
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	super()
+	camera.follow_node = player
+	
 	heartContainer.setMaxHearts(player.maxHealth)
 	heartContainer.updateHearts(player.currentHealth)
 	player.healthChanged.connect(heartContainer.updateHearts)
