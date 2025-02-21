@@ -21,6 +21,7 @@ var isHurt: bool = false
 var isAttacking: bool = false
 
 func _ready():
+	inventory.use_item.connect(use_item)
 	effects.play("RESET")
 	weapon.disable()
 
@@ -87,3 +88,11 @@ func knockback(enemyVelocity: Vector2):
 
 func _on_hurt_box_area_exited(area):
 	pass
+
+func increase_health(amount: int) -> void:
+	currentHealth += amount
+	currentHealth = min(maxHealth, currentHealth)
+	healthChanged.emit(currentHealth)
+
+func use_item(item: InventoryItem) -> void:
+	item.use(self)
