@@ -8,3 +8,6 @@ class_name InventoryItem
 
 func use(player: Player) -> void:
 	pass
+
+func can_be_used(player: Player) -> bool:
+	return true
