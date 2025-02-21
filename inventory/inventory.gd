@@ -36,7 +36,7 @@ func insertSlot(index: int, inventorySlot: InventorySlot):
 	updated.emit()
 	
 func use_item_at_index(index: int) -> void:
-	if index < 0 || index >= slots.size() || !slots[index]: return
+	if index < 0 || index >= slots.size() || !slots[index].item: return
 	var slot = slots[index]
 	index_of_last_used_item = index
 	use_item.emit(slot.item)
